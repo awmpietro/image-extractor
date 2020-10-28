@@ -1,0 +1,44 @@
+version: "3.7"
+
+services:
+  client:
+    tty: true
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    depends_on:
+      - server
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - NODE_OPTIONS=--max-old-space-size=4096
+      - REACT_APP_SERVER_URL=http://localhost:8080
+    ports:
+      - "5000:5000"
+    command: sh -c "npm run build && serve -s build"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    container_name: client-image-extractor
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    environment:
+      - NODE_ENV=development
+      - PORT=8080
+    ports:
+      - "8080:8080"
+    command: sh -c "npm start"
+    volumes:
+      - ./server:/app/
+      - /app/node_modules
+    container_name: server-image-extractor
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/db:/data/db
+    container_name: mongo-image-extractor
