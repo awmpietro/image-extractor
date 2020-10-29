@@ -30,7 +30,7 @@ const Home: React.FC<Props> = ({ extract, isError, message, images, socketHandle
     }, [images, isError]);
 
     const onSubmit = (values) => {
-        //setLoading(true);
+        setLoading(true);
         const { url } = values;
         return extract(url);
     };
