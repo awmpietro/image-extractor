@@ -31,7 +31,3 @@ The project is made by 3 services:
 - [server] - Built on top of Node
 - [client] - Built on top of React
 - [mongo] - nosql database
-
-## What could be improved
-
-- Tests: I wrote a few tests on server, it could cover more. On client i wrote no tests as i am still learning strategies of testing in React;
