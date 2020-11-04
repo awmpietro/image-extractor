@@ -1,7 +1,5 @@
 # Image Extractor
 
-Test project for 55PBX
-
 [![](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
 [![](https://img.shields.io/badge/dependencies-docker-blue.svg)]()
 [![](https://img.shields.io/badge/node-%3E%3D12-green.svg)]()
